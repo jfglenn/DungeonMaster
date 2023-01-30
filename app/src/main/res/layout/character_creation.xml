@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/olive_green"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_bullitenBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bulliten_board" />
+
+    <ScrollView
+        android:id="@+id/sv_characteristics"
+        android:layout_width="409dp"
+        android:layout_height="416dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bullitenBoard">
+
+        <TableLayout
+            android:id="@+id/tl_characteristics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/tr_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <FrameLayout
+                    android:id="@+id/fl_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        app:srcCompat="@drawable/square_button" />
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="177dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:background="@null"
+                        android:ems="10"
+                        android:fontFamily="@font/woodland_font"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:hint="@string/et_name"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/dark_brown" />
+
+
+                </FrameLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr_race"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/fl_race"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/ibtn_race"
+                        android:layout_width="256dp"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        app:srcCompat="@drawable/pointed_button" />
+
+                    <TextView
+                        android:id="@+id/tv_race"
+                        android:layout_width="169dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:background="@null"
+                        android:ems="10"
+                        android:clickable="true"
+                        android:fontFamily="@font/woodland_font"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:hint="@string/btn_race"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/dark_brown"
+                        android:textSize="20dp" />
+
+                </FrameLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr_class"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/fl_class"
+                    android:layout_width="243dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/ibtn_class"
+                        android:layout_width="261dp"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="Choose Your Race"
+                        app:srcCompat="@drawable/pointed_button" />
+
+                    <TextView
+                        android:id="@+id/tv_class"
+                        android:layout_width="187dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:background="@null"
+                        android:ems="10"
+                        android:clickable="true"
+                        android:fontFamily="@font/woodland_font"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:hint="@string/btn_class"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/dark_brown"
+                        android:textSize="20dp" />
+
+                </FrameLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
