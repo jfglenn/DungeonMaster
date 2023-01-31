@@ -1,4 +1,4 @@
-public class CharacterSheet {
+public class CharacterSheetModel {
 
     private int id;
     private String name;
@@ -7,14 +7,14 @@ public class CharacterSheet {
 
     // Constructors
 
-    public CharacterSheet(int id, String name, String races, String classes) {
+    public CharacterSheetModel(int id, String name, String races, String classes) {
         this.id = id;
         this.name = name;
         this.races = races;
         this.classes = classes;
     }
 
-    public CharacterSheet(){
+    public CharacterSheetModel(){
 
     }
 
