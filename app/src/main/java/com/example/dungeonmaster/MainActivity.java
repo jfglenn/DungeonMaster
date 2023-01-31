@@ -42,16 +42,14 @@ public class MainActivity extends AppCompatActivity {
         ibtn_race.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PopupRace.class);
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "race button clicked", Toast.LENGTH_SHORT).show();
+                openRacePopup();
             }
         });
 
         tv_race.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "race text clicked", Toast.LENGTH_SHORT).show();
+                openRacePopup();
             }
         });
 
@@ -70,10 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void openPopup(){
-        /*Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_race);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        dialog.show();*/
+    private void openRacePopup(){
+        Intent intent = new Intent(MainActivity.this, PopupRace.class);
+        startActivity(intent);
     }
 }
