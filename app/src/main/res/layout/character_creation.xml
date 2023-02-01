@@ -144,8 +144,25 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tr_save_disregard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent" >
+
+                <ImageButton
+                    android:id="@+id/ibtn_disregardAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/close_button"
+                    android:background="@null"/>
+
+                <ImageButton
+                    android:id="@+id/ibtn_saveAll"
+                    android:layout_width="83dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    app:srcCompat="@drawable/save_button" />
+
+            </TableRow>
         </TableLayout>
     </ScrollView>
 
