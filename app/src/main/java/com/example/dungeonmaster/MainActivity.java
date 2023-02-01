@@ -3,9 +3,7 @@ package com.example.dungeonmaster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,8 +17,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openRacePopup();
-                displayRaces();
+                displayCharacterRaces();
             }
         });
 
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openRacePopup();
-                displayRaces();
+                displayCharacterRaces();
             }
         });
 
@@ -82,25 +86,35 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void displayRaces(){
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://www.dnd5eapi.co/api/classes/barbarian";
+    private void displayCharacterRaces(){
+        String url = "https://www.dnd5eapi.co/api/races";
 
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    // extract data array from object
+                    //JSONObject racesResults = response.getJSONObject("results");
+                    JSONArray racesArray = response.getJSONArray("results");
+                    //int length = racesArray.length();
+
+                    JSONObject race = racesArray.getJSONObject(0);
+
+                    Toast.makeText(MainActivity.this, race.getString("name"), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
         // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+        SingletonHelper.getInstance(this).addToRequestQueue(request);
     }
 }
