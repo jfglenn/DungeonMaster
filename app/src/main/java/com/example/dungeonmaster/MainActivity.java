@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openRacePopup();
-                displayCharacterRaces();
             }
         });
 
@@ -62,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openRacePopup();
-                displayCharacterRaces();
             }
         });
 
@@ -84,37 +82,5 @@ public class MainActivity extends AppCompatActivity {
     private void openRacePopup(){
         Intent intent = new Intent(MainActivity.this, PopupRace.class);
         startActivity(intent);
-    }
-
-    private void displayCharacterRaces(){
-        String url = "https://www.dnd5eapi.co/api/races";
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    // extract data array from object
-                    //JSONObject racesResults = response.getJSONObject("results");
-                    JSONArray racesArray = response.getJSONArray("results");
-                    //int length = racesArray.length();
-
-                    JSONObject race = racesArray.getJSONObject(0);
-
-                    Toast.makeText(MainActivity.this, race.getString("name"), Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Add the request to the RequestQueue.
-        SingletonHelper.getInstance(this).addToRequestQueue(request);
     }
 }

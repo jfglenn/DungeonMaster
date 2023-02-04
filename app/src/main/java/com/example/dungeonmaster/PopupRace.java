@@ -37,15 +37,20 @@ public class PopupRace extends AppCompatActivity {
         rl_popup_race.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DndDataHelper dndDataHelper = new DndDataHelper(PopupRace.this);
+                dndDataHelper.getCharacterRaces(new DndDataHelper.VolleyResponseListener() {
+                    @Override
+                    public void onError(String message) {
+                        Toast.makeText(PopupRace.this, "Cannot display character races!", Toast.LENGTH_SHORT).show();
+                    }
 
-                Toast.makeText(PopupRace.this, "clicked", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onResponse(String races) {
+                        Toast.makeText(PopupRace.this, races, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
-    }
-
-    private void closePopup(){
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_race);
-        dialog.cancel();
     }
 }
